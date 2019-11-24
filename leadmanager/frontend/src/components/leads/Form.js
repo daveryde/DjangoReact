@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import { addLead } from '../../actions/leads';
 
 export class Form extends Component {
+  static propTypes = {
+    addLead: PropTypes.func.isRequired
+  };
+
   state = {
     name: '',
     email: '',
@@ -11,7 +19,14 @@ export class Form extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log('submit');
+    const { name, email, message } = this.state;
+    const lead = { name, email, message };
+    this.props.addLead(lead);
+    this.setState({
+      name: '',
+      email: '',
+      message: ''
+    });
   };
 
   render() {
@@ -52,7 +67,7 @@ export class Form extends Component {
           </div>
           <div className='form-group'>
             <button type='submit' className='btn btn-primary'>
-              submit
+              Submit
             </button>
           </div>
         </form>
@@ -61,4 +76,4 @@ export class Form extends Component {
   }
 }
 
-export default Form;
+export default connect(null, { addLead })(Form);
