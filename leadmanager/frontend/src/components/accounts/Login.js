@@ -14,6 +14,7 @@ export class Login extends Component {
     login: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool
   };
+
   onSubmit = e => {
     e.preventDefault();
 

@@ -19,12 +19,15 @@ export class Alerts extends Component {
         alert.error(`Message: ${error.msg.message.join()}`);
       if (error.msg.non_field_errors)
         alert.error(`Error: ${error.msg.non_field_errors.join()}`);
+      if (error.msg.username)
+        alert.error(`Error: ${error.msg.username.join()}`);
     }
 
     // Alert if the message was deleted
     if (message !== prevProps.message) {
       if (message.deleteLead) alert.success(message.deleteLead);
       if (message.addLead) alert.success(message.addLead);
+      if (message.passwordNotMatch) alert.error(message.passwordNotMatch);
     }
   }
   render() {
