@@ -66,11 +66,11 @@ export class Register extends Component {
             </div>
             <div className='form-group'>
               <button type='submit' className='btn btn-primary'>
-                Login
+                Register
               </button>
             </div>
             <p>
-              Don't an account? <Link to='/register'>Register</Link>
+              Already have an account? <Link to='/login'>Login</Link>
             </p>
           </form>
         </div>
